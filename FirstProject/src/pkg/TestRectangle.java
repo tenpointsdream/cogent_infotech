@@ -18,6 +18,7 @@ public class TestRectangle {
 		for (Rectangle r: rect) {
 			r.display();
 		}
+		sc.close();
 	}
 
 }
