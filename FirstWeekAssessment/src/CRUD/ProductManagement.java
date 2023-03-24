@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ProductManagement {
 	public static void main(String[] args) {
-		Product products[] = null;
+		Product products[] = new Product[10];
 		Scanner sc = new Scanner(System.in);
 		int choice = 0;
 		do {

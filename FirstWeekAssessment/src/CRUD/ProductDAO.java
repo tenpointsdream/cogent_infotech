@@ -24,7 +24,7 @@ public class ProductDAO {
 	public void read(Product products[]) {
 		for (Product p: products) {
 			if (p == null) {
-				System.out.println("NO PRODUCT INFOMATION");
+				System.out.println("[NO PRODUCT INFOMATION]");
 				continue;
 			}
 			else {
@@ -82,6 +82,8 @@ public class ProductDAO {
 					System.out.println("Exiting Delete function");
 					
 			}
+			else 
+				continue;
 		}
 		if (!found)
 			System.out.println("No product with provided ID found!");
