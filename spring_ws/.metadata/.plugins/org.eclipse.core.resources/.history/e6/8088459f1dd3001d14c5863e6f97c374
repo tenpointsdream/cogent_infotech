@@ -1,0 +1,33 @@
+package first.spring;
+
+import java.util.List;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
+		Greeting greeting = (Greeting) ctx.getBean("hello");
+		String str = greeting.message();
+		Employee employee = (Employee) ctx.getBean("emp");
+		System.out.println(str);
+		System.out.println("Employee number: " + employee.getId());
+		System.out.println("Employee name: " + employee.getName());
+		Person person = (Person) ctx.getBean("person");
+//		Person person = (Person) ctx.getBean(Person.class);		//This actually works 
+		System.out.println("\nPerson id: " + person.getId());
+		System.out.println("Person name: " + person.getName());
+		System.out.println("Person age: " + person.getAge());
+		Hospital hospital = (Hospital) ctx.getBean("hospital");
+		System.out.println("\nHospital name: " + hospital.getName());
+		List<String> department = hospital.getDepartment();
+		System.out.print("Departments of this hospital: ");
+		for (String string : department) {
+			System.out.print(string + ", ");
+		}
+		System.out.println();
+		ctx.close();
+	}
+
+}

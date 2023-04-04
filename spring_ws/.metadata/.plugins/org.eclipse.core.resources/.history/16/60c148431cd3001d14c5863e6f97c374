@@ -1,0 +1,8 @@
+package first.spring;
+
+import java.util.List;
+
+public class Hospital {
+	private String name;
+	private List<String> department;
+}

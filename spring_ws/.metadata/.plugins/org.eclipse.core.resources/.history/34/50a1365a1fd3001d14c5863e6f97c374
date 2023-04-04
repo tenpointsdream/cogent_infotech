@@ -1,0 +1,8 @@
+package first.spring;
+
+import java.util.Map;
+
+public class Customer {
+	private int id;
+	private Map<Integer, String> product;
+}
