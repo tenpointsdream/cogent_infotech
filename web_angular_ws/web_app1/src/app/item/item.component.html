@@ -1,0 +1,136 @@
+<!-- <h1>List of Items </h1>
+<table style="border: 2px solid; border-collapse: collapse;">
+    <tr>
+        <th>Item number:</th>
+        <th *ngFor="let iNo of itemNo">
+            {{iNo}}
+        </th>
+    </tr>
+    <tr>
+        <th>Item name:</th>
+        <th *ngFor="let iName of itemName">
+            {{iName}}
+        </th>
+    </tr>
+    <tr>
+        <th>Item price:</th>
+        <th *ngFor="let iPrice of itemPrice">
+            ${{iPrice}}
+        </th>
+    </tr>
+    <tr>
+        <th>Image:</th>
+        <th *ngFor="let imgUrl of ImgUrl">
+            <img [src]="imgUrl" alt="">
+        </th>
+    </tr>
+</table>
+<br>
+<h1>List of Items</h1> -->
+<!-- <h1>List of Items (list format)</h1>
+<ul>
+    <li>
+        Item number: {{itemNo[0]}} <br>
+        Item name: {{itemName[0]}} <br>
+        Item price: ${{itemPrice[0]}} <br>
+        <img [src]="ImgUrl[0]" alt=""> <br>
+    </li>
+    <li>
+        Item number: {{itemNo[1]}} <br>
+        Item name: {{itemName[1]}} <br>
+        Item price: ${{itemPrice[1]}} <br>
+        <img [src]="ImgUrl[1]" alt=""> <br>
+    </li>
+    <li>
+        Item number: {{itemNo[2]}} <br>
+        Item name: {{itemName[2]}} <br>
+        Item price: ${{itemPrice[2]}} <br>
+        <img [src]="ImgUrl[2]" alt=""> <br>
+    </li>
+    <li>
+        Item number: {{itemNo[3]}} <br>
+        Item name: {{itemName[3]}} <br>
+        Item price: ${{itemPrice[3]}} <br>
+        <img [src]="ImgUrl[3]" alt=""> <br>
+    </li>
+    <li>
+        Item number: {{itemNo[4]}} <br>
+        Item name: {{itemName[4]}} <br>
+        Item price: ${{itemPrice[4]}} <br>
+        <img [src]="ImgUrl[4]" alt=""> <br>
+    </li>
+</ul> -->
+
+<!-- <table style="border: 2px solid; border-collapse: collapse;">
+    <tr>
+        <th>Item number</th>
+        <th>Item name</th>
+        <th>Item price</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr id="row0">
+        <th>{{itemNo[0]}}</th>
+        <th>{{itemName[0]}}</th>
+        <th>${{itemPrice[0]}}</th>
+        <th><img [src]="ImgUrl[0]" alt=""></th>
+        <th><button (click)="edit(0)">Edit</button></th>
+        <th><button (click)="deleteItem(0)">Delete</button></th>
+    </tr>
+    <tr id="row1">
+        <th>{{itemNo[1]}}</th>
+        <th>{{itemName[1]}}</th>
+        <th>${{itemPrice[1]}}</th>
+        <th><img [src]="ImgUrl[1]" alt=""></th>
+        <th><button (click)="edit(1)">Edit</button></th>
+        <th><button (click)="deleteItem(1)">Delete</button></th>
+    </tr>
+    <tr id="row2">
+        <th>{{itemNo[2]}}</th>
+        <th>{{itemName[2]}}</th>
+        <th>${{itemPrice[2]}}</th>
+        <th><img [src]="ImgUrl[2]" alt=""></th>
+        <th><button (click)="edit(2)">Edit</button></th>
+        <th><button (click)="deleteItem(2)">Delete</button></th>
+    </tr>
+    <tr id="row3">
+        <th>{{itemNo[3]}}</th>
+        <th>{{itemName[3]}}</th>
+        <th>${{itemPrice[3]}}</th>
+        <th><img [src]="ImgUrl[3]" alt=""></th>
+        <th><button (click)="edit(3)">Edit</button></th>
+        <th><button (click)="deleteItem(3)">Delete</button></th>
+    </tr>
+    <tr id="row4">
+        <th>{{itemNo[4]}}</th>
+        <th>{{itemName[4]}}</th>
+        <th>${{itemPrice[4]}}</th>
+        <th><img [src]="ImgUrl[4]" alt=""></th>
+        <th><button (click)="edit(4)">Edit</button></th>
+        <th><button (click)="deleteItem(4)">Delete</button></th>
+    </tr>
+</table> -->
+
+<div *ngFor="let itemIndex of itemNo; let i = index">
+    <div>
+        <p>Item No: {{ itemNo[i] }}</p>
+        <p>Item Name: {{ itemName[i] }}</p>
+        <p>Item Price: {{ itemPrice[i] }}</p>
+        <img [src]="imgUrl[i]" alt="item image">
+        <button (click)="deleteItem(i)">Delete</button>
+        <button (click)="showEditForm(i)">Edit</button>
+    </div>
+    <div *ngIf="editingIndex === i">
+        <form (ngSubmit)="updateItem()" #editForm="ngForm">
+            <input type="text" name="editingItemName" [(ngModel)]="editingItemName" placeholder="New item name"
+                required><br>
+            <input type="number" name="editingItemPrice" [(ngModel)]="editingItemPrice" placeholder="New item price"
+                required><br>
+            <input type="text" name="editingItemImgUrl" [(ngModel)]="editingItemImgUrl" placeholder="New item image URL"
+                required><br>
+            <button type="submit">Update</button><br>
+            <button type="button" (click)="cancelEdit()">Cancel</button>
+        </form>
+    </div>
+</div>
