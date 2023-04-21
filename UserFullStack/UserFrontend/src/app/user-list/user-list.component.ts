@@ -14,17 +14,24 @@ export class UserListComponent implements OnInit {
   onVisible: boolean = false;
   users: any;
   user: any;
+  editIndex = -1;
+  editName = '';
+  editAge = 0;
+  editSalary = 0;
   constructor(
     private getService: GetService,
     private updateService: UpdateService,
     private deleteService: DeleteService) {
   }
-  cancelEdit(){
+  cancelEdit() {
     this.onVisible = false;
   }
-  editUser(id: number) {
+  editUser(id: number, name: string, age: number, salary: number) {
     this.onVisible = true;
-    this.user.id = id;
+    this.editIndex = id;
+    this.editName = name;
+    this.editAge = age;
+    this.editSalary = salary;
   }
   ngOnInit(): void {
     this.getService.getUsers().subscribe(response => {
@@ -32,11 +39,16 @@ export class UserListComponent implements OnInit {
     })
   }
   updateUser(editform: any) {
+    this.user.id = this.editIndex;
     this.user.name = editform.value.name;
     this.user.age = editform.value.age;
     this.user.salary = editform.value.salary;
     this.updateService.update(this.user);
     this.onVisible = false;
+    this.editIndex = -1;
+    this.editName = '';
+    this.editAge = 0;
+    this.editSalary = 0;
   }
   deleteUser(id: number) {
     this.deleteService.delete(id);

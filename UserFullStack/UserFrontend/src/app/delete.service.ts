@@ -11,6 +11,6 @@ export class DeleteService {
   constructor(private httpClient: HttpClient) { }
   delete(id: number): Observable<User> {
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.delete<User>((url));
+    return this.httpClient.delete<User>(url);
   }
 }
