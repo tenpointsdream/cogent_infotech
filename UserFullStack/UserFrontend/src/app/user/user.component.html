@@ -1,0 +1,21 @@
+<div>
+    <div>
+        <h2>User</h2>
+    </div>
+    <form nonvalidate #submitform='ngForm' (ngSubmit)="onSubmit(submitform)">
+        <div class="form-group">
+            <label for="name" class="name-field">Name</label>
+            <input type="text" [(ngModel)]='model.name' name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="age" class="name-field">Age</label>
+            <input type="number" [(ngModel)]='model.age' name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="salary" class="name-field">Salary</label>
+            <input type="number" [(ngModel)]='model.salary' name="salary" required>
+        </div>
+        <button [disabled]="submitform.invalid" type="submit">Add</button>
+        <button type="button" (click)="onReset(submitform)">Reset</button>
+    </form>
+</div>

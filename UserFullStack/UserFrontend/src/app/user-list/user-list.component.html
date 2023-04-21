@@ -1,0 +1,34 @@
+<div>
+    <div>
+        <h3>List of Users</h3>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>SALARY</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; index as i">
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.salary}}</td>
+                    <button (click)="editUser()">Edit</button>
+                    <button (click)="deleteUser(i)">Delete</button>
+                    <form *ngIf="onVisible === true">
+                        <label for="name">Name: </label>
+                        <input type="text" name="name">
+                        <label for="age">Age: </label>
+                        <input type="text" name="age">
+                        <label for="salary"></label>
+                        <input type="text" name="salary">
+                        <button>Cancel</button>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
