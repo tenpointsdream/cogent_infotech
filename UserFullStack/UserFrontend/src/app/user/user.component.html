@@ -15,7 +15,7 @@
             <label for="salary" class="name-field">Salary</label>
             <input type="number" [(ngModel)]='model.salary' name="salary" required>
         </div>
-        <button [disabled]="submitform.invalid" type="submit">Add</button>
+        <button [disabled]="submitform.invalid" (click)="refresh()" type="submit">Add</button>
         <button type="button" (click)="onReset(submitform)">Reset</button>
     </form>
 </div>

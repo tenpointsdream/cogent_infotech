@@ -11,24 +11,33 @@
                 <th>SALARY</th>
             </thead>
             <tbody>
-                <tr *ngFor="let user of users; index as i">
+                <tr *ngFor="let user of users">
                     <td>{{user.id}}</td>
                     <td>{{user.name}}</td>
                     <td>{{user.age}}</td>
                     <td>{{user.salary}}</td>
-                    <button (click)="editUser()">Edit</button>
-                    <button (click)="deleteUser(i)">Delete</button>
-                    <form *ngIf="onVisible === true">
-                        <label for="name">Name: </label>
-                        <input type="text" name="name">
-                        <label for="age">Age: </label>
-                        <input type="text" name="age">
-                        <label for="salary"></label>
-                        <input type="text" name="salary">
-                        <button>Cancel</button>
-                    </form>
+                    <button (click)="editUser(user.id)">Edit</button>
+                    <button (click)="deleteUser(user.id); refresh()">Delete</button>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div *ngIf="onVisible">
+        <form nonvalidate #editform='ngForm' (ngSubmit)="updateUser(editform)">
+            <div class="form-group">
+                <label for="name" class="name-field">Name</label>
+                <input type="text" [(ngModel)]='user.name' name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age" class="name-field">Age</label>
+                <input type="number" [(ngModel)]='user.age' name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="salary" class="name-field">Salary</label>
+                <input type="number" [(ngModel)]='user.salary' name="salary" required>
+            </div>
+            <button [disabled]="editform.invalid" type="submit" (click)="refresh()">Update</button>
+            <button type="button" (click)="onReset(editform); cancelEdit()">Cancel</button>
+        </form>
     </div>
 </div>

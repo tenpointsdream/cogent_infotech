@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class UpdateService {
   private baseUrl = 'http://localhost:8080/users/';
   constructor(private httpClient: HttpClient) { }
-  update(user: User): Observable<User> {
-    // const url = `${this.baseUrl}/${id}`
-    return this.httpClient.put<User>(this.baseUrl, user);
+  update(user: any): Observable<User> {
+    const url = `${this.baseUrl}/${user.id}`;
+    return this.httpClient.put<User>(url, user);
   }
 }

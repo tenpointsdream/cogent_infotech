@@ -30,6 +30,9 @@ export class UserComponent {
   onReset(form: NgForm) {
     form.resetForm();
   }
+  refresh() {
+    window.location.reload();
+  }
 }
 
 
